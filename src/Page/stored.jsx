@@ -13,7 +13,7 @@ function Home() {
   // Show Data
   useEffect(() => {
     axios
-      .get("http://localhost:2700/readalluser")
+      .get("https://todo-backend-0gia.onrender.com/readalluser")
       .then((res) => {
         setData(res.data);
       })
@@ -37,7 +37,7 @@ function Home() {
     e.preventDefault();
     if (editId) {
       axios
-        .put(`http://localhost:2700/updateuser/${editId}`, inputuser)
+        .put(`https://todo-backend-0gia.onrender.com/updateuser/${editId}`, inputuser)
         .then((res) => {
           setData((prev) =>
             prev.map((item) =>
@@ -51,7 +51,7 @@ function Home() {
         .catch((err) => console.log("Put API ERROR", err));
     } else {
       axios
-        .post("http://localhost:2700/createuser", inputuser)
+        .post("https://todo-backend-0gia.onrender.com/createuser", inputuser)
         .then((res) => {
           setData([...data, res.data]);
           setInputuser({ name: "", todolist: "" });
@@ -65,7 +65,7 @@ function Home() {
   // Edit Button
   const handleedit = (id) => {
     axios
-      .put(`http://localhost:2700/updateuser/${id}`)
+      .put(`https://todo-backend-0gia.onrender.com/updateuser/${id}`)
       .then((res) => {
         const edit = data.find((prev) => prev._id === id);
         setInputuser({
